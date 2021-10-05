@@ -10,6 +10,10 @@ Local setup of SonarQube using docker-compose for easy code scanning.
 ```
 ./start-sonarqube.sh
 ```  
+You can access SonarQube on: [http://localhost](http://localhost)  
+UserName: admin
+Password: bitnami
+  
 
 ## Running Sonar Scanner
 Install sonarscanner tool for dotnet cli before running the scanner.
