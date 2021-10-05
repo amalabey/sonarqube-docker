@@ -1,11 +1,11 @@
 from sonarqube import SonarQubeClient
 
 url = 'http://localhost'
-username = "admin"
-password = "bitnami"
+username = "<user>"
+password = "<password>"
 sonar = SonarQubeClient(sonarqube_url=url, username=username, password=password)
 
-key = "Suez-Integration"
+key = "<project-name>"
 
 issues = list(sonar.issues.search_issues(componentKeys=key))
 
