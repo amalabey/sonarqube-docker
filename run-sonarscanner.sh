@@ -27,4 +27,9 @@ echo $cwd
 
 dotnet sonarscanner begin /k:$project /d:sonar.login=$token /d:sonar.host.url=http://localhost
 dotnet build
+for testProjeFile in `find . -type f -iname "*Test*.csproj"`; do
+  echo "Running tests in: $testProjeFile"
+  dotnet add $testProjeFile package coverlet.msbuild
+  dotnet test $testProjeFile /p:CollectCoverage=true /p:Cover
+done
 dotnet sonarscanner end /d:sonar.login=$token
