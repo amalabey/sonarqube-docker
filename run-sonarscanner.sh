@@ -25,11 +25,8 @@ cd $workingDir
 cwd=$(pwd)
 echo $cwd
 
-dotnet sonarscanner begin /k:$project /d:sonar.login=$token /d:sonar.host.url=http://localhost
+dotnet tool install --global dotnet-coverage
+dotnet sonarscanner begin /k:$project /d:sonar.login=$token /d:sonar.host.url=http://localhost  /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
 dotnet build
-for testProjeFile in `find . -type f -iname "*Test*.csproj"`; do
-  echo "Running tests in: $testProjeFile"
-  dotnet add $testProjeFile package coverlet.msbuild
-  dotnet test $testProjeFile /p:CollectCoverage=true /p:Cover
-done
+dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
 dotnet sonarscanner end /d:sonar.login=$token
