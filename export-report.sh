@@ -18,5 +18,5 @@ while getopts ":t:p:" opt; do
   esac
 done
 
-java -jar sonar-cnes-report-4.0.0.jar -t $token -s http://localhost -p $project
+java -jar sonar-cnes-report.jar -t $token -s http://localhost -p $project
 

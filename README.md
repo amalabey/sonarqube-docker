@@ -23,7 +23,7 @@ dotnet tool install --global dotnet-sonarscanner
 
 Run the scanner to publish report to SonarQube:
 ```
-./run-sonarscanner.sh -w <dotnet sln dir> -t <token> -p <project name>
+./scan-dotnet.sh -w <dotnet sln dir> -t <token> -p <project name>
 ```  
 
 ## Exporting Reports
